@@ -35,11 +35,24 @@ a:hover{color:#A9D0F2}
 
 /* header */
 header{position:sticky;top:0;z-index:5;background:rgba(14,26,41,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap}
-.brand{font-weight:600;color:var(--ink);text-decoration:none;font-size:17px}
-nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;flex-wrap:wrap}
-nav a{color:var(--soft);text-decoration:none;font-size:15px}
-nav a:hover{color:var(--ink)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.brand{display:inline-flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none}
+.brand:hover{color:var(--ink)}
+.mark{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;font-family:var(--mono);font-weight:500;font-size:15px;color:var(--ground);
+  background:linear-gradient(135deg,var(--accent),var(--ok));box-shadow:0 6px 18px -6px rgba(127,184,234,.55)}
+nav ul{list-style:none;display:flex;align-items:center;gap:4px;margin:0;padding:0}
+nav a{display:block;color:var(--soft);text-decoration:none;font-size:15px;padding:8px 12px;border-radius:8px}
+nav a:hover{color:var(--ink);background:rgba(127,184,234,.08)}
+nav a.active{color:var(--ink);background:rgba(127,184,234,.12)}
+nav a.nav-cta{color:var(--ground);background:var(--accent);font-weight:600;margin-left:8px}
+nav a.nav-cta:hover{background:#A9D0F2;color:var(--ground)}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--ink);cursor:pointer;place-items:center}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;position:relative;transition:transform .2s,background .2s}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0}
+.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+.menu-btn[aria-expanded="true"] span{background:transparent}
+.menu-btn[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:8px;font-weight:600;font-size:16px;text-decoration:none;border:1px solid var(--accent)}
@@ -50,8 +63,15 @@ nav a:hover{color:var(--ink)}
 
 /* hero */
 .hero{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:88px 0 72px}
-.hero h1{font-size:clamp(44px,6vw,72px);line-height:1.02;letter-spacing:-.02em;margin:0 0 20px;font-weight:700}
-.hero .role{font-size:clamp(20px,2.2vw,24px);color:var(--accent);margin:0 0 18px;font-weight:500}
+.status{display:inline-flex;align-items:center;gap:10px;margin:0 0 22px;padding:6px 14px 6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(19,36,58,.7);font-size:14px;color:var(--soft)}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(143,214,168,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(143,214,168,0)}100%{box-shadow:0 0 0 0 rgba(143,214,168,0)}}
+.hello{font-family:var(--mono);color:var(--muted);font-size:15px;margin:0 0 8px;letter-spacing:.02em}
+.hero h1{font-size:clamp(46px,7.4vw,92px);line-height:.95;letter-spacing:-.035em;margin:0 0 22px;font-weight:700}
+.hero h1 span{display:block}
+.hero h1 .last{background:linear-gradient(100deg,var(--accent) 10%,var(--ok) 90%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.06em}
+.hero .role{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;padding:0;list-style:none}
+.hero .role li{font-family:var(--mono);font-size:14px;color:var(--accent);border:1px solid rgba(127,184,234,.35);background:rgba(127,184,234,.07);border-radius:6px;padding:4px 10px}
 .hero p.lede{color:var(--soft);font-size:19px;max-width:34em;margin:0 0 28px}
 .cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
 .where{color:var(--muted);font-size:15px;margin:0}
@@ -123,28 +143,61 @@ h2{font-size:clamp(28px,3.4vw,38px);line-height:1.15;letter-spacing:-.01em;margi
 footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:14px}
 
 @media (max-width:860px){
-  .hero{grid-template-columns:1fr;padding:56px 0 48px;gap:40px}
-  .about{grid-template-columns:1fr}
-  .about img{width:160px;height:160px}
+  .hero{grid-template-columns:1fr;padding:48px 0 48px;gap:40px}
+  .about{grid-template-columns:1fr;gap:28px}
+  .about img{width:140px;height:140px}
   .job{grid-template-columns:1fr;gap:6px}
-  .two{grid-template-columns:1fr}
-  nav ul{gap:16px}
+  .job .when{padding-left:29px}
+  .two{grid-template-columns:1fr;gap:16px}
+  .menu-btn{display:grid}
+  nav{position:absolute;top:100%;left:0;right:0;background:rgba(14,26,41,.98);border-bottom:1px solid var(--line);
+    max-height:0;overflow:hidden;visibility:hidden;transition:max-height .25s ease,visibility .25s}
+  nav.open{max-height:420px;visibility:visible}
+  nav ul{flex-direction:column;align-items:stretch;gap:2px;padding:10px 16px 18px}
+  nav a{font-size:17px;padding:12px 14px}
+  nav a.nav-cta{margin:8px 0 0;text-align:center}
 }
-@media (max-width:480px){.term pre{font-size:12.5px;padding:16px;min-height:0}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cursor{animation:none}}
+@media (max-width:560px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  section{padding:56px 0}
+  .intro{margin-bottom:28px}
+  .hero{padding:36px 0 40px}
+  .hero h1{font-size:clamp(46px,15vw,64px);margin-bottom:18px}
+  .hero p.lede{font-size:17px}
+  .cta{flex-direction:column}
+  .cta .btn,.links .btn{justify-content:center;width:100%}
+  .links{flex-direction:column}
+  .facts{display:grid;grid-template-columns:1fr;gap:16px}
+  .facts li{max-width:none;padding-left:14px;border-left:2px solid var(--accent)}
+  .facts strong{font-size:22px}
+  .sec{grid-template-columns:1fr}
+  .sec article{padding:20px}
+  .award{padding:18px}
+  .job .body{padding-left:22px}
+  .job .when{padding-left:23px}
+  .job ul{padding-left:16px}
+  .contact .big{font-size:21px;word-break:normal;overflow-wrap:anywhere}
+  .term pre{font-size:12px;padding:16px;min-height:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cursor,.status i{animation:none}nav{transition:none}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header>
   <div class="wrap bar">
-    <a class="brand" href="#top">Nassir Ghraizi</a>
-    <nav aria-label="Main">
+    <a class="brand" href="#top" aria-label="Nassir Ghraizi, back to top">
+      <span class="mark" aria-hidden="true">NG</span>
+    </a>
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
+    <nav id="site-nav" aria-label="Main">
       <ul>
         <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#experience">Experience</a></li>
-        <li><a href="#security">Security research</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a class="nav-cta" href="#contact">Contact</a></li>
       </ul>
     </nav>
   </div>
@@ -154,8 +207,13 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
   <div class="wrap" id="top">
     <div class="hero">
       <div>
-        <h1>Nassir Ghraizi</h1>
-        <p class="role">Senior Software Developer and Cybersecurity Researcher</p>
+        <p class="status"><i aria-hidden="true"></i>Open to new roles</p>
+        <p class="hello">Hi, I'm</p>
+        <h1><span class="first">Nassir</span> <span class="last">Ghraizi</span></h1>
+        <ul class="role" aria-label="Roles">
+          <li>Senior Software Developer</li>
+          <li>Cybersecurity Researcher</li>
+        </ul>
         <p class="lede">I build scalable, secure web applications and APIs with PHP, Laravel, Vue.js and AWS, and I test them the way an attacker would.</p>
         <div class="cta">
           <a class="btn primary" href="Nassir_Ghraizi_CV.pdf" download>Download CV</a>
@@ -354,6 +412,29 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 <script>
 (function(){
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var btn = document.querySelector('.menu-btn'), nav = document.getElementById('site-nav');
+  function setMenu(open){
+    nav.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  btn.addEventListener('click', function(){ setMenu(!nav.classList.contains('open')); });
+  nav.addEventListener('click', function(e){ if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setMenu(false); });
+
+  if ('IntersectionObserver' in window) {
+    var links = {};
+    nav.querySelectorAll('a[href^="#"]').forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var a = links[en.target.id]; if (!a || !en.isIntersecting) return;
+        nav.querySelectorAll('a.active').forEach(function(x){ x.classList.remove('active'); });
+        if (!a.classList.contains('nav-cta')) a.classList.add('active');
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    Object.keys(links).forEach(function(id){ var s = document.getElementById(id); if (s) io.observe(s); });
+  }
   var lines = [
     ['<span class="p">$</span> <span class="hi">git push origin main</span>', 500],
     ['<span class="dim">› running tests (Pest)</span> ....... <span class="ok">passed</span>', 650],
