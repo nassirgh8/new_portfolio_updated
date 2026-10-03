@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nassir Ghraizi | Senior Software Developer &amp; Cybersecurity Researcher</title>
+<meta name="description" content="Senior Software Developer with 6+ years building scalable, secure web applications with PHP, Laravel, Vue.js and AWS. Bug bounty researcher with 20+ valid findings.">
+<meta property="og:title" content="Nassir Ghraizi | Senior Software Developer">
+<meta property="og:description" content="Laravel, Vue.js and AWS developer with a cybersecurity researcher's mindset.">
+<meta property="og:image" content="og.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0E1A29">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230E1A29'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' text-anchor='middle' fill='%237FB8EA'%3ENG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#0E1A29; --panel:#13243A; --line:#24394F;
+  --ink:#F2F6FA; --soft:#B4C3D3; --muted:#8397AC;
+  --accent:#7FB8EA; --ok:#8FD6A8;
+  --sans:'IBM Plex Sans','Segoe UI','Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono',Consolas,'Courier New',monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;
+  background-image:radial-gradient(rgba(127,184,234,.07) 1px,transparent 1px);background-size:24px 24px;
+  padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:var(--accent);text-underline-offset:3px}
+a:hover{color:#A9D0F2}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;background:var(--panel);padding:8px 12px;z-index:10}
+
+/* header */
+header{position:sticky;top:0;z-index:5;background:rgba(14,26,41,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap}
+.brand{font-weight:600;color:var(--ink);text-decoration:none;font-size:17px}
+nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;flex-wrap:wrap}
+nav a{color:var(--soft);text-decoration:none;font-size:15px}
+nav a:hover{color:var(--ink)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:8px;font-weight:600;font-size:16px;text-decoration:none;border:1px solid var(--accent)}
+.btn.primary{background:var(--accent);color:#0E1A29}
+.btn.primary:hover{background:#A9D0F2;color:#0E1A29}
+.btn.ghost{color:var(--ink)}
+.btn.ghost:hover{background:rgba(127,184,234,.12);color:var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:88px 0 72px}
+.hero h1{font-size:clamp(44px,6vw,72px);line-height:1.02;letter-spacing:-.02em;margin:0 0 20px;font-weight:700}
+.hero .role{font-size:clamp(20px,2.2vw,24px);color:var(--accent);margin:0 0 18px;font-weight:500}
+.hero p.lede{color:var(--soft);font-size:19px;max-width:34em;margin:0 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.where{color:var(--muted);font-size:15px;margin:0}
+
+/* terminal — the one bold moment */
+.term{background:#09131F;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.term-top{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.term-top span{width:11px;height:11px;border-radius:50%;background:#2A3E55}
+.term-top b{margin-left:8px;font-family:var(--mono);font-weight:400;font-size:13px;color:var(--muted)}
+.term pre{margin:0;padding:20px 20px 24px;font-family:var(--mono);font-size:14.5px;line-height:1.75;color:var(--soft);min-height:300px;white-space:pre-wrap;overflow-x:auto}
+.term .p{color:var(--accent)} .term .ok{color:var(--ok)} .term .dim{color:var(--muted)} .term .hi{color:var(--ink)}
+.cursor{display:inline-block;width:9px;height:18px;background:var(--accent);vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(28px,3.4vw,38px);line-height:1.15;letter-spacing:-.01em;margin:0 0 12px}
+.intro{color:var(--soft);max-width:40em;margin:0 0 40px}
+
+/* about */
+.about{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start}
+.about img{width:220px;height:220px;border-radius:50%;object-fit:cover;border:3px solid var(--line)}
+.about p{color:var(--soft);max-width:40em;margin:0 0 16px}
+.facts{display:flex;gap:40px;flex-wrap:wrap;margin-top:28px;padding:0;list-style:none}
+.facts li{color:var(--soft);font-size:15px;max-width:15em}
+.facts strong{display:block;color:var(--ink);font-size:26px;line-height:1.2}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px 40px}
+.skills h3{font-size:17px;margin:0 0 10px;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.chips li{border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:4px 11px;font-size:15px;color:var(--soft)}
+
+/* experience timeline */
+.jobs{list-style:none;margin:0;padding:0;position:relative}
+.job{display:grid;grid-template-columns:190px 1fr;gap:32px;padding:0 0 40px;position:relative}
+.job .when{color:var(--muted);font-size:15px;padding-top:3px}
+.job .body{border-left:1px solid var(--line);padding-left:28px;position:relative}
+.job .body::before{content:"";position:absolute;left:-6px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--ground);border:2px solid var(--accent)}
+.job h3{margin:0;font-size:20px}
+.job .org{color:var(--accent);margin:2px 0 10px;font-size:16px}
+.job ul{margin:0;padding-left:18px;color:var(--soft)}
+.job li{margin:4px 0}
+
+/* security */
+.sec{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.sec article{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:26px}
+.sec h3{margin:0 0 4px;font-size:20px}
+.sec .meta{color:var(--muted);font-size:15px;margin:0 0 14px}
+.sec ul{margin:0;padding-left:18px;color:var(--soft)}
+.sec li{margin:6px 0}
+.award{margin-top:24px;display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:22px 26px}
+.award svg{flex:none;margin-top:3px}
+.award h3{margin:0 0 2px;font-size:18px}
+.award p{margin:0;color:var(--soft)}
+
+/* projects, education */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.item{margin-bottom:28px}
+.item h3{margin:0;font-size:19px}
+.item .meta{color:var(--muted);font-size:15px;margin:2px 0 8px}
+.item p{margin:0;color:var(--soft)}
+
+/* contact */
+.contact{text-align:left}
+.contact .big{font-size:clamp(24px,3vw,34px);font-weight:600;color:var(--ink);text-decoration:none;word-break:break-all}
+.contact .big:hover{color:var(--accent)}
+.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:14px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding:56px 0 48px;gap:40px}
+  .about{grid-template-columns:1fr}
+  .about img{width:160px;height:160px}
+  .job{grid-template-columns:1fr;gap:6px}
+  .two{grid-template-columns:1fr}
+  nav ul{gap:16px}
+}
+@media (max-width:480px){.term pre{font-size:12.5px;padding:16px;min-height:0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cursor{animation:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top">Nassir Ghraizi</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#security">Security research</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap" id="top">
+    <div class="hero">
+      <div>
+        <h1>Nassir Ghraizi</h1>
+        <p class="role">Senior Software Developer and Cybersecurity Researcher</p>
+        <p class="lede">I build scalable, secure web applications and APIs with PHP, Laravel, Vue.js and AWS, and I test them the way an attacker would.</p>
+        <div class="cta">
+          <a class="btn primary" href="Nassir_Ghraizi_CV.pdf" download>Download CV</a>
+          <a class="btn ghost" href="mailto:nassirghraizi8@gmail.com">Email me</a>
+        </div>
+        <p class="where">Based in Aley, Lebanon. Open to roles in Saudi Arabia and remote.</p>
+      </div>
+      <div class="term" role="img" aria-label="A deployment pipeline running tests, a security audit, a Docker build and a zero-downtime release to AWS ECS">
+        <div class="term-top"><span></span><span></span><span></span><b>deploy — main</b></div>
+        <pre id="term" aria-hidden="true"></pre>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap about">
+      <img src="nassir.jpg" alt="Portrait of Nassir Ghraizi" width="220" height="220">
+      <div>
+        <h2>About me</h2>
+        <p>I'm a senior software developer with 6+ years of experience designing and building backend systems: database schemas and query optimization in MySQL and PostgreSQL, modular microservices following SOLID principles, and RESTful APIs secured with JWT authentication.</p>
+        <p>I ship through CI/CD pipelines on AWS (EC2, ECS, CodePipeline) using GitHub Actions, Docker and Terraform. Alongside development, I'm an active bug bounty researcher on YesWeHack and Bugcrowd, so I build with security in mind from the first line of code.</p>
+        <ul class="facts">
+          <li><strong>6+ years</strong>building backend systems</li>
+          <li><strong>#1 ranked</strong>researcher on a YesWeHack program</li>
+          <li><strong>20+ valid</strong>security findings, including a critical IDOR</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <p class="intro">The tools I use day to day, grouped by where they fit in a system.</p>
+      <div class="skills">
+        <div><h3>Backend</h3><ul class="chips"><li>PHP</li><li>Laravel</li><li>RESTful APIs</li><li>JWT authentication</li><li>Eloquent ORM</li></ul></div>
+        <div><h3>Cloud and DevOps</h3><ul class="chips"><li>AWS EC2</li><li>AWS ECS</li><li>CodePipeline</li><li>GitHub Actions</li><li>Docker</li><li>Terraform</li><li>CI/CD</li></ul></div>
+        <div><h3>Databases</h3><ul class="chips"><li>MySQL</li><li>PostgreSQL</li><li>Query optimization</li><li>Schema design</li></ul></div>
+        <div><h3>Architecture</h3><ul class="chips"><li>Microservices</li><li>SOLID</li><li>Dependency injection</li><li>Middleware</li></ul></div>
+        <div><h3>Security</h3><ul class="chips"><li>Penetration testing</li><li>OWASP Top 10</li><li>SQL injection, XSS, CSRF</li><li>IDOR</li><li>Kali Linux</li></ul></div>
+        <div><h3>Frontend and process</h3><ul class="chips"><li>Vue.js</li><li>JavaScript</li><li>HTML and CSS</li><li>Pest</li><li>Git</li><li>Agile and Scrum</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2>Experience</h2>
+      <p class="intro">Five roles over 6+ years, most recent first.</p>
+      <ol class="jobs" reversed>
+        <li class="job">
+          <div class="when">Dec 2024 – Aug 2026</div>
+          <div class="body">
+            <h3>Senior Software Developer</h3>
+            <p class="org">Aspire Software</p>
+            <ul>
+              <li>Designed and developed scalable, maintainable, high-performance applications and made architectural decisions.</li>
+              <li>Optimized database queries and schemas, and removed performance bottlenecks.</li>
+              <li>Built CI/CD pipelines with AWS CodePipeline and GitHub Actions to deploy Dockerized applications to EC2 and ECS, with infrastructure provisioned using Terraform.</li>
+              <li>Applied security best practices against SQL injection, XSS and CSRF.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job">
+          <div class="when">Jun 2023 – Apr 2024</div>
+          <div class="body">
+            <h3>Backend Developer</h3>
+            <p class="org">Abiroot Digital</p>
+            <ul>
+              <li>Built modular, testable backend solutions with SOLID principles and Laravel's dependency injection.</li>
+              <li>Built isolated, loosely coupled components for modularity and deployment flexibility.</li>
+              <li>Developed custom middleware for request filtering, role management and session security.</li>
+              <li>Led Scrum ceremonies to keep the team productive and on schedule.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job">
+          <div class="when">Mar 2022 – May 2023</div>
+          <div class="body">
+            <h3>Backend Developer</h3>
+            <p class="org">Globalistic Tech.</p>
+            <ul>
+              <li>Designed and implemented scalable backend architecture with Laravel.</li>
+              <li>Managed complex Eloquent relationships and optimized queries for performance.</li>
+              <li>Automated routine processes with Laravel's task scheduler.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job">
+          <div class="when">Jul 2020 – Feb 2022</div>
+          <div class="body">
+            <h3>Backend Developer</h3>
+            <p class="org">Kerning Code</p>
+            <ul>
+              <li>Designed scalable Laravel backends focused on reliability and performance.</li>
+              <li>Developed and maintained RESTful APIs with JWT-based authentication.</li>
+              <li>Implemented data encryption and SQL injection prevention to protect user data.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job">
+          <div class="when">Jun 2019 – May 2020</div>
+          <div class="body">
+            <h3>Full Stack Web Developer</h3>
+            <p class="org">Integrated Digital Solutions</p>
+            <ul>
+              <li>Built a scalable backend on the .NET Framework following the MVC pattern.</li>
+              <li>Developed RESTful APIs with authentication and authorization.</li>
+              <li>Integrated error handling and logging to diagnose issues quickly.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="security">
+    <div class="wrap">
+      <h2>Security research</h2>
+      <p class="intro">Freelance bug bounty work since 2023. Finding how systems break makes me better at building ones that don't.</p>
+      <div class="sec">
+        <article>
+          <h3>YesWeHack</h3>
+          <p class="meta">Cybersecurity Researcher, Nov 2023 – present</p>
+          <ul>
+            <li>Ranked #1 researcher on a bug bounty program.</li>
+            <li>More than 20 valid findings across bug bounty programs.</li>
+            <li>Discovered a critical IDOR that exposed sensitive client data, fixed immediately after my report.</li>
+            <li>Reported XSS and authentication bypass vulnerabilities; tested web applications, APIs and authentication flows.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Bugcrowd</h3>
+          <p class="meta">Cybersecurity Researcher, Oct 2023 – present</p>
+          <ul>
+            <li>Wrote detailed proof-of-concept reports and worked with security teams to triage and remediate issues.</li>
+            <li>Uncovered a denial-of-service weakness that led the target to add rate limiting and other mitigations.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="award">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7FB8EA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></svg>
+        <div>
+          <h3>Recognition Award, Bug Bounty Hunter</h3>
+          <p>Semicolon Security, 2025. Recognized for discovering security vulnerabilities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="more">
+    <div class="wrap two">
+      <div>
+        <h2>Projects</h2>
+        <div class="item">
+          <h3><a href="https://academy.twomindsengine.com" target="_blank" rel="noopener">TWO MINDS Academy</a></h3>
+          <p class="meta">2026</p>
+          <p>A learning platform that helps students and aspiring tech professionals learn software development.</p>
+        </div>
+      </div>
+      <div>
+        <h2>Education</h2>
+        <div class="item">
+          <h3>Bachelor's Degree in Computer Science</h3>
+          <p class="meta">Lebanese University, 2016 – 2019</p>
+        </div>
+        <div class="item">
+          <h3>Certified Cybersecurity Specialist</h3>
+          <p class="meta">Semicolon Security, 2024</p>
+        </div>
+        <div class="item">
+          <h3>Full Stack Web Developer</h3>
+          <p class="meta">Codi-Tech, 2019 – 2020</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <h2>Let's talk</h2>
+      <p class="intro">I'm looking for senior backend or full-stack roles in Saudi Arabia or remote. The quickest way to reach me is email.</p>
+      <a class="big" href="mailto:nassirghraizi8@gmail.com">nassirghraizi8@gmail.com</a>
+      <div class="links">
+        <a class="btn primary" href="Nassir_Ghraizi_CV.pdf" download>Download CV</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/nassirgh/" target="_blank" rel="noopener">LinkedIn profile</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr">2026</span> Nassir Ghraizi.</div>
+</footer>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var lines = [
+    ['<span class="p">$</span> <span class="hi">git push origin main</span>', 500],
+    ['<span class="dim">› running tests (Pest)</span> ....... <span class="ok">passed</span>', 650],
+    ['<span class="dim">› static analysis</span> ........ <span class="ok">no issues</span>', 500],
+    ['<span class="dim">› composer audit</span> ......... <span class="ok">0 vulns</span>', 600],
+    ['<span class="dim">› docker build</span> ........... <span class="ok">done</span>', 700],
+    ['<span class="dim">› push image to ECR</span> ...... <span class="ok">done</span>', 500],
+    ['<span class="dim">› deploy to AWS ECS</span> ...... <span class="ok">healthy</span>', 900],
+    ['', 200],
+    ['<span class="ok">✓ released with zero downtime</span>', 400],
+    ['<span class="p">$</span> <span class="cursor"></span>', 0]
+  ];
+  var el = document.getElementById('term');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { el.innerHTML = lines.map(function(l){return l[0];}).join('\n'); return; }
+  var i = 0, out = [];
+  function next(){
+    if (i >= lines.length) return;
+    out.push(lines[i][0]); el.innerHTML = out.join('\n');
+    var d = lines[i][1]; i++; if (i < lines.length) setTimeout(next, d);
+  }
+  setTimeout(next, 400);
+})();
+</script>
+</body>
+</html>
